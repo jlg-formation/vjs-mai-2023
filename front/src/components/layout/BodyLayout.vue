@@ -1,11 +1,11 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <p>Body works!</p>
+  <div class="body">Body works as always...</div>
 </template>
 
-<style scoped>
-
+<style scoped lang="scss">
+div.body {
+  flex: 1;
+}
 </style>
