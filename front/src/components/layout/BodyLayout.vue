@@ -9,5 +9,7 @@
 <style scoped lang="scss">
 div.body {
   flex: 1;
+  display: flex;
+  flex-flow: column;
 }
 </style>
