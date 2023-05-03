@@ -12,9 +12,19 @@
 <style scoped lang="scss">
 header {
   background-color: #eee;
+  height: 3em;
+  padding: 0 0.5em;
+  display: flex;
+  align-items: center;
 
-  img {
-    height: 2.5em;
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+    img {
+      height: 2.5em;
+    }
   }
 }
 </style>
