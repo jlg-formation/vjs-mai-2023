@@ -1,7 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="body">Body works as always...</div>
+  <div class="body">
+    <RouterView />
+  </div>
 </template>
 
 <style scoped lang="scss">
