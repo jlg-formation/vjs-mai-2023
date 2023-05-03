@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="about">
+  <main>
     <p>Legal works!</p>
-  </div>
+  </main>
 </template>
 
 <style lang="scss"></style>
