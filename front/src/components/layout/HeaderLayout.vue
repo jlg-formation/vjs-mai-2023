@@ -2,10 +2,10 @@
 
 <template>
   <header>
-    <a href="#">
+    <RouterLink to="/">
       <img src="/logo.svg" alt="Logo" />
       <span>Gestion Stock</span>
-    </a>
+    </RouterLink>
   </header>
 </template>
 

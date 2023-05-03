@@ -2,7 +2,7 @@
 
 <template>
   <footer>
-    <a href="#"> Mentions légales </a>
+    <RouterLink to="/legal"> Mentions légales </RouterLink>
   </footer>
 </template>
 
