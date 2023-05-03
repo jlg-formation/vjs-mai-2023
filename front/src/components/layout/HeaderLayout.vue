@@ -22,6 +22,18 @@ header {
     align-items: center;
     gap: 0.5em;
 
+    color: inherit;
+    text-decoration: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    span {
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
     img {
       height: 2.5em;
     }
