@@ -10,10 +10,6 @@
 <style scoped lang="scss">
 main {
   flex: 1;
-  display: flex;
-  flex-flow: column;
-
-  align-items: center;
   justify-content: center;
 }
 </style>
