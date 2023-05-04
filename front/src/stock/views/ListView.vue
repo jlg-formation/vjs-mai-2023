@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const articles = [
+  { id: 'a1', name: 'Tournevis', price: 2.99, qty: 123 },
+  { id: 'a2', name: 'Pelle', price: 3, qty: 4 },
+  { id: 'a3', name: 'Marteau', price: 1, qty: 62 }
+]
+</script>
 
 <template>
   <main>
@@ -24,25 +30,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="name">Tournevis</td>
-            <td class="price">3.50 €</td>
-            <td class="qty">450</td>
-          </tr>
-          <tr>
-            <td class="name">Pelle</td>
-            <td class="price">2.50 €</td>
-            <td class="qty">23</td>
-          </tr>
-          <tr>
-            <td class="name">Rateau</td>
-            <td class="price">10.00 €</td>
-            <td class="qty">100</td>
-          </tr>
-          <tr>
-            <td class="name">Marteau</td>
-            <td class="price">4.60 €</td>
-            <td class="qty">8</td>
+          <tr v-for="a in articles" v-bind:key="a.id">
+            <td class="name">{{ a.name }}</td>
+            <td class="price">{{ a.price }} €</td>
+            <td class="qty">{{ a.qty }}</td>
           </tr>
         </tbody>
       </table>
