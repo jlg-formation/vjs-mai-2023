@@ -1,8 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useArticleStore } from '@/stores/articles'
+
+const articleStore = useArticleStore()
+</script>
 
 <template>
   <footer>
     <RouterLink to="/legal"> Mentions légales </RouterLink>
+    <span>Nbr Articles: {{ articleStore.articles.length }}</span>
   </footer>
 </template>
 
@@ -12,7 +17,7 @@ footer {
   height: var(--height);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 
   a {
     color: inherit;
