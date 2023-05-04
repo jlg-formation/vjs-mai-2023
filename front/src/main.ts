@@ -10,7 +10,7 @@ import { fontawesome } from './fontawesome'
 
 const app = createApp(App)
 
-app.use(fontawesome)
+app.use(fontawesome, { xxx: true })
 app.use(createPinia())
 app.use(router)
 
