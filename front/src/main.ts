@@ -9,9 +9,9 @@ import './assets/main.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import { faAngleRight, faRotateRight } from '@fortawesome/free-solid-svg-icons'
+import { faAngleRight, faPlus, faRotateRight, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faAngleRight, faRotateRight)
+library.add(faAngleRight, faRotateRight, faTrashCan, faPlus)
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)

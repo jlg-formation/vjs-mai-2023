@@ -8,8 +8,12 @@
         <button title="Rafraîchir">
           <font-awesome-icon icon="fa-solid fa-rotate-right" />
         </button>
-        <RouterLink :to="$route.path + '/add'" class="button">Ajouter</RouterLink>
-        <button>Supprimer</button>
+        <RouterLink :to="$route.path + '/add'" class="button" title="Ajouter">
+          <font-awesome-icon icon="fa-solid fa-plus" />
+        </RouterLink>
+        <button title="Supprimer">
+          <font-awesome-icon icon="fa-solid fa-trash-can" />
+        </button>
       </nav>
       <table>
         <thead>
