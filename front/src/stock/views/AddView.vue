@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const name = ref('')
+</script>
 
 <template>
   <main>
@@ -6,7 +10,7 @@
     <form>
       <label>
         <span>Nom</span>
-        <input type="text" />
+        <input type="text" v-model="name" />
       </label>
       <label>
         <span>Prix</span>
@@ -21,6 +25,7 @@
         <span>Ajouter</span>
       </button>
     </form>
+    <span>{{ name }}</span>
   </main>
 </template>
 
