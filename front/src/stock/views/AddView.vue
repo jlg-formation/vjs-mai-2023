@@ -1,31 +1,37 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const name = ref('')
+const name = ref('Truc')
+const price = ref(0)
+const qty = ref(1)
+
+const handleSubmit = (event: Event) => {
+  console.log('event: ', event)
+  console.log('submit')
+}
 </script>
 
 <template>
   <main>
     <h1>Ajouter un article</h1>
-    <form>
+    <form @submit.prevent="handleSubmit">
       <label>
         <span>Nom</span>
         <input type="text" v-model="name" />
       </label>
       <label>
         <span>Prix</span>
-        <input type="number" />
+        <input type="number" v-model="price" />
       </label>
       <label>
         <span>Quantité</span>
-        <input type="number" />
+        <input type="number" v-model="qty" />
       </label>
       <button class="primary">
         <font-awesome-icon icon="fa-solid fa-plus" />
         <span>Ajouter</span>
       </button>
     </form>
-    <span>{{ name }}</span>
   </main>
 </template>
 
