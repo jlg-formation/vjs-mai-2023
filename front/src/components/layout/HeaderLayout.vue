@@ -11,8 +11,8 @@
 
 <style scoped lang="scss">
 header {
-  background-color: #eee;
-  height: 3em;
+  background-color: var(--eee);
+  height: var(--height);
   padding: 0 0.5em;
   display: flex;
   align-items: center;

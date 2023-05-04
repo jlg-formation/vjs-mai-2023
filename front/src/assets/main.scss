@@ -1,8 +1,25 @@
 @use '../../node_modules/normalize.css/normalize.css';
 @use '../../node_modules/sanitize.css/sanitize.css';
 
+:root {
+  --height: 3em;
+  --bg-color: white;
+  --color: black;
+  --eee: #eee;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: black;
+    --color: #ddd;
+    --eee: #333;
+  }
+}
+
 body {
   font-family: sans-serif;
+  background-color: var(--bg-color);
+  color: var(--color);
 }
 
 div#app {

@@ -8,8 +8,8 @@
 
 <style scoped lang="scss">
 footer {
-  background-color: #eee;
-  height: 3em;
+  background-color: var(--eee);
+  height: var(--height);
   display: flex;
   align-items: center;
   justify-content: center;
