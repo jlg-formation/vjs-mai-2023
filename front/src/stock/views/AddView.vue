@@ -16,7 +16,10 @@
         <span>Quantité</span>
         <input type="number" />
       </label>
-      <button class="primary">Ajouter</button>
+      <button class="primary">
+        <font-awesome-icon icon="fa-solid fa-plus" />
+        <span>Ajouter</span>
+      </button>
     </form>
   </main>
 </template>
