@@ -44,4 +44,53 @@
   </main>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+div.content {
+  display: flex;
+  flex-flow: column;
+  gap: 2em;
+
+  nav {
+    display: flex;
+    gap: 0.3em;
+  }
+
+  table {
+    border: 0.1em solid var(--bbb);
+
+    border-radius: 0.3em;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+
+    td,
+    th {
+      padding: 0.5em 1em;
+    }
+
+    thead {
+      background-color: var(--bbb);
+    }
+
+    tbody {
+      cursor: pointer;
+      tr:nth-child(even) {
+        background-color: var(--eee);
+      }
+
+      tr:hover {
+        background-color: var(--ddd);
+      }
+
+      tr.selected {
+        background-color: var(--ccc);
+      }
+
+      td.price,
+      td.qty {
+        text-align: right;
+      }
+    }
+  }
+}
+</style>
