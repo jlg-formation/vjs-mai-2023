@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const name = ref('Truc')
 const price = ref(0)
 const qty = ref(1)
 
+const router = useRouter()
+
 const handleSubmit = (event: Event) => {
   console.log('event: ', event)
   console.log('submit')
+
+  router.push('/stock')
 }
 </script>
 
