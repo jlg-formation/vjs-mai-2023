@@ -5,7 +5,9 @@
     <h1>Liste des articles</h1>
     <div class="content">
       <nav>
-        <button>Rafraîchir</button>
+        <button title="Rafraîchir">
+          <font-awesome-icon icon="fa-solid fa-rotate-right" />
+        </button>
         <RouterLink :to="$route.path + '/add'" class="button">Ajouter</RouterLink>
         <button>Supprimer</button>
       </nav>
