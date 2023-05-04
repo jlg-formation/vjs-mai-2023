@@ -3,7 +3,10 @@
 <template>
   <main>
     <h1>Gérer efficacement votre stock !</h1>
-    <RouterLink to="/stock" class="button primary">Voir le stock</RouterLink>
+    <RouterLink to="/stock" class="button primary">
+      <span>Voir le stock</span>
+      <fa-icon icon="fa-solid fa-user-secret" />
+    </RouterLink>
   </main>
 </template>
 
