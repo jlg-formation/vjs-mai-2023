@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import type { Article } from '@/interfaces/Article'
+import { ref, type Ref } from 'vue'
 
-const articles: Article[] = [
+const articles: Ref<Article[]> = ref([
   { id: 'a1', name: 'Tournevis', price: 2.99, qty: 123 },
   { id: 'a2', name: 'Pelle', price: 3, qty: 4 },
   { id: 'a3', name: 'Marteau', price: 1, qty: 62 }
-]
+])
+
+setTimeout(() => {
+  console.log('hello')
+  articles.value.push({ id: 'a4', name: 'Truc', price: 1, qty: 2 })
+}, 2000)
 </script>
 
 <template>
