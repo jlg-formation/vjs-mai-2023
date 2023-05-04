@@ -30,7 +30,7 @@ const articles = [
           </tr>
         </thead>
         <tbody>
-          <tr v-for="a in articles" v-bind:key="a.id">
+          <tr v-for="a in articles" :key="a.id">
             <td class="name">{{ a.name }}</td>
             <td class="price">{{ a.price }} €</td>
             <td class="qty">{{ a.qty }}</td>
