@@ -1,8 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import VersionWidget from '@/components/widgets/VersionWidget.vue'
+
+const trucVersion = '1.4.5'
+</script>
 
 <template>
   <main>
     <h1>Mentions Légales</h1>
+    <VersionWidget :version="trucVersion" />
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem excepturi illo nobis
       alias ullam, cum minus labore earum dolores porro aspernatur dignissimos magni error, corrupti
