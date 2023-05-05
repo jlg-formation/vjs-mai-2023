@@ -7,7 +7,7 @@ const articleStore = useArticleStore()
 <template>
   <footer>
     <RouterLink to="/legal"> Mentions légales </RouterLink>
-    <span>Nbr Articles: {{ articleStore.articles.length }}</span>
+    <span>Nbr Articles: {{ articleStore.size }}</span>
   </footer>
 </template>
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Article } from '@/interfaces/Article'
 import { useArticleStore } from '@/stores/articles'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const articleStore = useArticleStore()
 
@@ -51,6 +51,13 @@ const handleRefresh = async () => {
     isRefreshing.value = false
   }
 }
+
+onMounted(async () => {
+  console.log('on mounted')
+  if (articleStore.articles === undefined) {
+    await articleStore.refresh()
+  }
+})
 </script>
 
 <template>
@@ -88,11 +95,20 @@ const handleRefresh = async () => {
           </tr>
         </thead>
         <tbody>
+          <tr v-if="articleStore.articles === undefined">
+            <td colspan="3">
+              <div class="loading">
+                <font-awesome-icon icon="'fa-solid fa-circle-notch" spin />
+                <span>Chargement des articles...</span>
+              </div>
+            </td>
+          </tr>
           <tr
             v-for="a in articleStore.articles"
             :key="a.id"
             @click="handleSelect(a)"
             :class="{ selected: selectedArticles.has(a) }"
+            v-else
           >
             <td class="name">{{ a.name }}</td>
             <td class="price">{{ a.price }} €</td>
@@ -158,5 +174,12 @@ div.content {
       }
     }
   }
+}
+
+div.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
 }
 </style>
