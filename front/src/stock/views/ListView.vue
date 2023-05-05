@@ -10,6 +10,8 @@ const selectedArticles = ref(new Set<Article>())
 const isDeleting = ref(false)
 const errorMsg = ref('')
 
+const isRefreshing = ref(false)
+
 const handleSelect = (a: Article) => {
   if (selectedArticles.value.has(a)) {
     selectedArticles.value.delete(a)
@@ -36,7 +38,18 @@ const handleDelete = async () => {
 }
 
 const handleRefresh = async () => {
-  await articleStore.refresh()
+  try {
+    isRefreshing.value = true
+    errorMsg.value = ''
+    await articleStore.refresh()
+  } catch (err) {
+    console.log('err: ', err)
+    if (err instanceof Error) {
+      errorMsg.value = err.message
+    }
+  } finally {
+    isRefreshing.value = false
+  }
 }
 </script>
 
@@ -45,8 +58,8 @@ const handleRefresh = async () => {
     <h1>Liste des articles</h1>
     <div class="content">
       <nav>
-        <button title="Rafraîchir" @click="handleRefresh">
-          <font-awesome-icon icon="fa-solid fa-rotate-right" />
+        <button title="Rafraîchir" @click="handleRefresh" :disabled="isRefreshing">
+          <font-awesome-icon icon="fa-solid fa-rotate-right" :spin="isRefreshing" />
         </button>
         <RouterLink :to="$route.path + '/add'" class="button" title="Ajouter">
           <font-awesome-icon icon="fa-solid fa-plus" />
