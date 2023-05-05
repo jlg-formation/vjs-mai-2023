@@ -7,6 +7,8 @@ const articleStore = useArticleStore()
 
 const selectedArticles = ref(new Set<Article>())
 
+const isDeleting = ref(false)
+
 const handleSelect = (a: Article) => {
   if (selectedArticles.value.has(a)) {
     selectedArticles.value.delete(a)
@@ -16,8 +18,10 @@ const handleSelect = (a: Article) => {
 }
 
 const handleDelete = async () => {
+  isDeleting.value = true
   const ids = [...selectedArticles.value].map((a) => a.id)
   await articleStore.remove(ids)
+  isDeleting.value = false
 }
 </script>
 
@@ -32,8 +36,16 @@ const handleDelete = async () => {
         <RouterLink :to="$route.path + '/add'" class="button" title="Ajouter">
           <font-awesome-icon icon="fa-solid fa-plus" />
         </RouterLink>
-        <button title="Supprimer" :hidden="selectedArticles.size === 0" @click="handleDelete()">
-          <font-awesome-icon icon="fa-solid fa-trash-can" />
+        <button
+          title="Supprimer"
+          :hidden="selectedArticles.size === 0"
+          @click="handleDelete()"
+          :disabled="isDeleting"
+        >
+          <font-awesome-icon
+            :icon="'fa-solid ' + (isDeleting ? 'fa-circle-notch' : 'fa-trash-can')"
+            :spin="isDeleting"
+          />
         </button>
       </nav>
       <table>
