@@ -18,6 +18,7 @@ const articleStore = useArticleStore()
 const handleSubmit = async () => {
   try {
     isAdding.value = true
+    errorMsg.value = ''
     const newArticle: NewArticle = {
       name: name.value,
       price: price.value,
