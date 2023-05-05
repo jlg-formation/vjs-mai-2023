@@ -21,6 +21,7 @@ const handleDelete = async () => {
   isDeleting.value = true
   const ids = [...selectedArticles.value].map((a) => a.id)
   await articleStore.remove(ids)
+  selectedArticles.value.clear()
   isDeleting.value = false
 }
 </script>
