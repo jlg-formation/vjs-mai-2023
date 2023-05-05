@@ -3,3 +3,7 @@ export const sleep = (delayMs: number): Promise<void> => {
     setTimeout(resolve, delayMs)
   })
 }
+
+export const generateId = (): string => {
+  return (Math.random() * 1e16).toFixed(0)
+}

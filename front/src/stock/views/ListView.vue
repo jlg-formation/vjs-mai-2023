@@ -2,11 +2,6 @@
 import { useArticleStore } from '@/stores/articles'
 
 const articleStore = useArticleStore()
-
-setTimeout(() => {
-  console.log('hello')
-  articleStore.articles.push({ id: 'a4', name: 'Truc', price: 1, qty: 2 })
-}, 2000)
 </script>
 
 <template>

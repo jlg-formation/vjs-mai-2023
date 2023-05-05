@@ -1,5 +1,5 @@
 import type { Article, NewArticle } from '@/interfaces/Article'
-import { sleep } from '@/misc'
+import { generateId, sleep } from '@/misc'
 import { defineStore } from 'pinia'
 import { ref, type Ref } from 'vue'
 
@@ -14,6 +14,8 @@ export const useArticleStore = defineStore('articles', () => {
     console.log('adding article', newArticle)
     await sleep(2000)
     console.log('wake up')
+    const article = { ...newArticle, id: generateId() }
+    articles.value.push(article)
   }
 
   return {
