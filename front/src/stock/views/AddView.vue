@@ -58,7 +58,10 @@ const handleSubmit = async () => {
         {{ errorMsg }}
       </div>
       <button class="primary" :disabled="isAdding">
-        <font-awesome-icon icon="fa-solid fa-plus" />
+        <font-awesome-icon
+          :icon="'fa-solid ' + (isAdding ? 'fa-circle-notch' : 'fa-plus')"
+          :spin="isAdding"
+        />
         <span>Ajouter</span>
       </button>
     </form>
