@@ -9,13 +9,9 @@ export const useArticleStore = defineStore('articles', () => {
 
   const add = async (newArticle: NewArticle) => {
     console.log('adding article', newArticle)
-    await sleep(2000)
+    await api.add(newArticle)
+    articles.value = await api.retrieveAll()
     console.log('wake up')
-    if (newArticle.name.length < 3) {
-      throw new Error("Le nom de l'article est trop court.")
-    }
-    const article = { ...newArticle, id: generateId() }
-    articles.value?.push(article)
   }
 
   const remove = async (ids: string[]) => {
