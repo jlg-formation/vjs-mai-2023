@@ -1,6 +1,5 @@
 import { api } from '@/api'
 import type { Article, NewArticle } from '@/interfaces/Article'
-import { generateId, sleep } from '@/misc'
 import { defineStore } from 'pinia'
 import { computed, ref, type Ref } from 'vue'
 
@@ -15,6 +14,9 @@ export const useArticleStore = defineStore('articles', () => {
   }
 
   const remove = async (ids: string[]) => {
+    if (ids.length === 2) {
+      throw new Error("interdit d'effacer 2 trucs")
+    }
     await api.remove(ids)
     articles.value = await api.retrieveAll()
   }
