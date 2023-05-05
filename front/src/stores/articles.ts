@@ -15,12 +15,8 @@ export const useArticleStore = defineStore('articles', () => {
   }
 
   const remove = async (ids: string[]) => {
-    await sleep(2000)
-    if (ids.length === 2) {
-      throw new Error('Impossible de supprimer deux elements.')
-    }
-
-    articles.value = articles.value?.filter((a) => !ids.includes(a.id))
+    await api.remove(ids)
+    articles.value = await api.retrieveAll()
   }
 
   const refresh = async () => {

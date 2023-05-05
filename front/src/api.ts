@@ -18,6 +18,20 @@ class API {
     }
   }
 
+  async remove(ids: string[]): Promise<void> {
+    try {
+      await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(ids)
+      })
+    } catch (err) {
+      throw new Error('Erreur Technique')
+    }
+  }
+
   async retrieveAll(): Promise<Article[]> {
     try {
       await sleep(2000)
