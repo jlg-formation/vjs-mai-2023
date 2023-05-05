@@ -1,3 +1,4 @@
+import { api } from '@/api'
 import type { Article, NewArticle } from '@/interfaces/Article'
 import { generateId, sleep } from '@/misc'
 import { defineStore } from 'pinia'
@@ -30,9 +31,14 @@ export const useArticleStore = defineStore('articles', () => {
     articles.value = articles.value.filter((a) => !ids.includes(a.id))
   }
 
+  const refresh = async () => {
+    articles.value = await api.retrieveAll()
+  }
+
   return {
     articles,
     add,
-    remove
+    remove,
+    refresh
   }
 })

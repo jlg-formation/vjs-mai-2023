@@ -34,6 +34,10 @@ const handleDelete = async () => {
     isDeleting.value = false
   }
 }
+
+const handleRefresh = async () => {
+  await articleStore.refresh()
+}
 </script>
 
 <template>
@@ -41,7 +45,7 @@ const handleDelete = async () => {
     <h1>Liste des articles</h1>
     <div class="content">
       <nav>
-        <button title="Rafraîchir">
+        <button title="Rafraîchir" @click="handleRefresh">
           <font-awesome-icon icon="fa-solid fa-rotate-right" />
         </button>
         <RouterLink :to="$route.path + '/add'" class="button" title="Ajouter">
