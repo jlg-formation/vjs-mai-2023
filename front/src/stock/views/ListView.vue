@@ -8,6 +8,7 @@ const articleStore = useArticleStore()
 const selectedArticles = ref(new Set<Article>())
 
 const isDeleting = ref(false)
+const errorMsg = ref('')
 
 const handleSelect = (a: Article) => {
   if (selectedArticles.value.has(a)) {
@@ -18,11 +19,20 @@ const handleSelect = (a: Article) => {
 }
 
 const handleDelete = async () => {
-  isDeleting.value = true
-  const ids = [...selectedArticles.value].map((a) => a.id)
-  await articleStore.remove(ids)
-  selectedArticles.value.clear()
-  isDeleting.value = false
+  try {
+    isDeleting.value = true
+    errorMsg.value = ''
+    const ids = [...selectedArticles.value].map((a) => a.id)
+    await articleStore.remove(ids)
+    selectedArticles.value.clear()
+  } catch (err) {
+    console.log('err: ', err)
+    if (err instanceof Error) {
+      errorMsg.value = err.message
+    }
+  } finally {
+    isDeleting.value = false
+  }
 }
 </script>
 
@@ -49,6 +59,9 @@ const handleDelete = async () => {
           />
         </button>
       </nav>
+      <div class="error">
+        {{ errorMsg }}
+      </div>
       <table>
         <thead>
           <tr>
@@ -78,11 +91,17 @@ const handleDelete = async () => {
 div.content {
   display: flex;
   flex-flow: column;
-  gap: 2em;
 
   nav {
     display: flex;
     gap: 0.3em;
+  }
+
+  div.error {
+    height: 2em;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
   }
 
   table {
