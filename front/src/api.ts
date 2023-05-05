@@ -1,6 +1,6 @@
 import type { Article } from './interfaces/Article'
 
-const url = 'http://localhost:3000/api/articles'
+const url = '/api/articles'
 
 class API {
   async retrieveAll(): Promise<Article[]> {
