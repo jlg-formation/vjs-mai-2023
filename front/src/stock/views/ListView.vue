@@ -27,7 +27,7 @@ const handleSelect = (a: Article) => {
         <RouterLink :to="$route.path + '/add'" class="button" title="Ajouter">
           <font-awesome-icon icon="fa-solid fa-plus" />
         </RouterLink>
-        <button title="Supprimer">
+        <button title="Supprimer" :hidden="selectedArticles.size === 0">
           <font-awesome-icon icon="fa-solid fa-trash-can" />
         </button>
       </nav>
