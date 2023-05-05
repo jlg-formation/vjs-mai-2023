@@ -8,11 +8,14 @@ const name = ref('Truc')
 const price = ref(0)
 const qty = ref(1)
 
+const isAdding = ref(false)
+
 const router = useRouter()
 const route = useRoute()
 const articleStore = useArticleStore()
 
 const handleSubmit = async () => {
+  isAdding.value = true
   const newArticle: NewArticle = {
     name: name.value,
     price: price.value,
@@ -21,6 +24,7 @@ const handleSubmit = async () => {
   await articleStore.add(newArticle)
   const parentPath = route.matched[0].path
   router.push(parentPath)
+  isAdding.value = false
 }
 </script>
 
@@ -40,7 +44,7 @@ const handleSubmit = async () => {
         <span>Quantité</span>
         <input type="number" v-model="qty" />
       </label>
-      <button class="primary">
+      <button class="primary" :disabled="isAdding">
         <font-awesome-icon icon="fa-solid fa-plus" />
         <span>Ajouter</span>
       </button>
