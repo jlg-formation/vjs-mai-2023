@@ -14,6 +14,9 @@ export const useArticleStore = defineStore('articles', () => {
     console.log('adding article', newArticle)
     await sleep(2000)
     console.log('wake up')
+    if (newArticle.name.length < 3) {
+      throw new Error("Le nom de l'article est trop court.")
+    }
     const article = { ...newArticle, id: generateId() }
     articles.value.push(article)
   }

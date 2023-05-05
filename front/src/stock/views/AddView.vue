@@ -9,22 +9,31 @@ const price = ref(0)
 const qty = ref(1)
 
 const isAdding = ref(false)
+const errorMsg = ref('')
 
 const router = useRouter()
 const route = useRoute()
 const articleStore = useArticleStore()
 
 const handleSubmit = async () => {
-  isAdding.value = true
-  const newArticle: NewArticle = {
-    name: name.value,
-    price: price.value,
-    qty: qty.value
+  try {
+    isAdding.value = true
+    const newArticle: NewArticle = {
+      name: name.value,
+      price: price.value,
+      qty: qty.value
+    }
+    await articleStore.add(newArticle)
+    const parentPath = route.matched[0].path
+    router.push(parentPath)
+  } catch (err) {
+    console.log('err: ', err)
+    if (err instanceof Error) {
+      errorMsg.value = err.message
+    }
+  } finally {
+    isAdding.value = false
   }
-  await articleStore.add(newArticle)
-  const parentPath = route.matched[0].path
-  router.push(parentPath)
-  isAdding.value = false
 }
 </script>
 
@@ -44,6 +53,9 @@ const handleSubmit = async () => {
         <span>Quantité</span>
         <input type="number" v-model="qty" />
       </label>
+      <div class="error">
+        {{ errorMsg }}
+      </div>
       <button class="primary" :disabled="isAdding">
         <font-awesome-icon icon="fa-solid fa-plus" />
         <span>Ajouter</span>
@@ -72,8 +84,12 @@ form {
     }
   }
 
-  button {
-    margin-top: 3em;
+  div.error {
+    height: 3em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
