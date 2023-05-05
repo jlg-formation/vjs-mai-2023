@@ -1,4 +1,5 @@
 import type { Article, NewArticle } from '@/interfaces/Article'
+import { sleep } from '@/misc'
 import { defineStore } from 'pinia'
 import { ref, type Ref } from 'vue'
 
@@ -9,8 +10,10 @@ export const useArticleStore = defineStore('articles', () => {
     { id: 'a3', name: 'Marteau', price: 1, qty: 62 }
   ])
 
-  const add = (newArticle: NewArticle) => {
+  const add = async (newArticle: NewArticle) => {
     console.log('adding article', newArticle)
+    await sleep(2000)
+    console.log('wake up')
   }
 
   return {

@@ -12,13 +12,13 @@ const router = useRouter()
 const route = useRoute()
 const articleStore = useArticleStore()
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   const newArticle: NewArticle = {
     name: name.value,
     price: price.value,
     qty: qty.value
   }
-  articleStore.add(newArticle)
+  await articleStore.add(newArticle)
   const parentPath = route.matched[0].path
   router.push(parentPath)
 }
