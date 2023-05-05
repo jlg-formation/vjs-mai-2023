@@ -21,8 +21,15 @@ export const useArticleStore = defineStore('articles', () => {
     articles.value.push(article)
   }
 
+  const remove = async (ids: string[]) => {
+    await sleep(2000)
+
+    articles.value = articles.value.filter((a) => !ids.includes(a.id))
+  }
+
   return {
     articles,
-    add
+    add,
+    remove
   }
 })

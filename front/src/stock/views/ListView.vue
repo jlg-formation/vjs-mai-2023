@@ -14,6 +14,11 @@ const handleSelect = (a: Article) => {
   }
   selectedArticles.value.add(a)
 }
+
+const handleDelete = async () => {
+  const ids = [...selectedArticles.value].map((a) => a.id)
+  await articleStore.remove(ids)
+}
 </script>
 
 <template>
@@ -27,7 +32,7 @@ const handleSelect = (a: Article) => {
         <RouterLink :to="$route.path + '/add'" class="button" title="Ajouter">
           <font-awesome-icon icon="fa-solid fa-plus" />
         </RouterLink>
-        <button title="Supprimer" :hidden="selectedArticles.size === 0">
+        <button title="Supprimer" :hidden="selectedArticles.size === 0" @click="handleDelete()">
           <font-awesome-icon icon="fa-solid fa-trash-can" />
         </button>
       </nav>
