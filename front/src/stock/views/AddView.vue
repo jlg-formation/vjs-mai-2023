@@ -1,18 +1,26 @@
 <script setup lang="ts">
+import type { NewArticle } from '@/interfaces/Article'
+import { useArticleStore } from '@/stores/articles'
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const name = ref('Truc')
 const price = ref(0)
 const qty = ref(1)
 
 const router = useRouter()
+const route = useRoute()
+const articleStore = useArticleStore()
 
-const handleSubmit = (event: Event) => {
-  console.log('event: ', event)
-  console.log('submit')
-
-  router.push('/stock')
+const handleSubmit = () => {
+  const newArticle: NewArticle = {
+    name: name.value,
+    price: price.value,
+    qty: qty.value
+  }
+  articleStore.add(newArticle)
+  const parentPath = route.matched[0].path
+  router.push(parentPath)
 }
 </script>
 

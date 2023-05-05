@@ -1,4 +1,4 @@
-import type { Article } from '@/interfaces/Article'
+import type { Article, NewArticle } from '@/interfaces/Article'
 import { defineStore } from 'pinia'
 import { ref, type Ref } from 'vue'
 
@@ -9,7 +9,12 @@ export const useArticleStore = defineStore('articles', () => {
     { id: 'a3', name: 'Marteau', price: 1, qty: 62 }
   ])
 
+  const add = (newArticle: NewArticle) => {
+    console.log('adding article', newArticle)
+  }
+
   return {
-    articles
+    articles,
+    add
   }
 })
